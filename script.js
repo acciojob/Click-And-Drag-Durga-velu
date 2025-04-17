@@ -3,10 +3,10 @@ let element
 let cubes=document.qurySelectorAll(".item")
 cubes.forEach((cube)=>{
 
-	cube.addEventListener("mousedown",(e)=>{
+	cube.addEventListener("mousedown",()=>{
        cube.style.position="absolute"
 		element=cube;
-		document.mousemove=(e)=>{
+		document.onmousemove=(e)=>{
 			let x=e.pageX;
 			let y=e.pageY;
 			element.style.left=x -50 + "px";
@@ -16,7 +16,7 @@ cubes.forEach((cube)=>{
 	})
 })
 
-document.mouseup=(e)=>{
+document.onmouseup=(e)=>{
 	element=null;
 }
 
