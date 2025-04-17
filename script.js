@@ -16,8 +16,9 @@ cubes.forEach((cube)=>{
 	})
 })
 
-document.onmouseup=(e)=>{
+document.onmouseup=()=>{
 	element=null;
+	document.onmousemove=null
 }
 
 
