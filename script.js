@@ -25,7 +25,7 @@ cubes.forEach((cube) => {
       let mouseX = e.clientX - containerRect.left - offsetX;
       let mouseY = e.clientY - containerRect.top - offsetY;
 
-      // Enforce boundaries
+     
       const maxX = container.clientWidth - cube.offsetWidth;
       const maxY = container.clientHeight - cube.offsetHeight;
 
@@ -38,8 +38,10 @@ cubes.forEach((cube) => {
   });
 });
 
-// Stop dragging
 document.onmouseup = () => {
+  if (element) {
+    element.style.zIndex = "";
+  }
   element = null;
   document.onmousemove = null;
 };
