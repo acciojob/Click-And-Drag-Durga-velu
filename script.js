@@ -5,6 +5,7 @@ let cubes=document.querySelectorAll(".item")
 cubes.forEach((cube)=>{
 
 	cube.addEventListener("mousedown",(e)=>{
+		e.preventDefault();
        cube.style.position="absolute"
 		element=cube;
 		offsetX = e.clientX - cube.getBoundingClientRect().left;
