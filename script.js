@@ -1,6 +1,6 @@
 // Your code here.
 let element;
-let offsetx,offsety, cubeleft,cubetop;
+let offsetX,offsetY;
 let cubes=document.querySelectorAll(".item")
 cubes.forEach((cube)=>{
 
