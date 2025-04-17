@@ -1,28 +1,36 @@
-const items = document.querySelector('.items');
-        let isMouseDown = false;
-        let startX, scrollLeft;
+// Your code here.
+let isDraggable=false
+let offsetX,offsetY, cubeLeft,cubeTop;
+let cubes=document.querySelectorAll(".item")
+cubes.forEach((cube)=>{
 
-        items.addEventListener('mousedown', (e) => {
-            isMouseDown = true;
-            items.classList.add('active');
-            startX = e.pageX - items.offsetLeft;
-            scrollLeft = items.scrollLeft;
-        });
+	cube.addEventListener("mousedown",(e)=>{
+		isDraggable=true;
+		cube.style.position = "absolute";
+		cube.style.zIndex = 1000;
+		offsetX = e.clientX;
+        offsetY = e.clientY; 
+	
+cubeLeft=cube.offsetLeft;
+cubeTop=cube.offsetTop;
+	})
 
-        items.addEventListener('mouseleave', () => {
-            isMouseDown = false;
-            items.classList.remove('active');
-        });
 
-        items.addEventListener('mouseup', () => {
-            isMouseDown = false;
-            items.classList.remove('active');
-        });
+document.addEventListener(("mousemove"),(e)=>{
 
-        items.addEventListener('mousemove', (e) => {
-            if (!isMouseDown) return;
-            e.preventDefault();
-            const x = e.pageX - items.offsetLeft;
-            const scroll = (x - startX) * 3;
-            items.scrollLeft = scrollLeft - scroll;
-        });
+	if(isDraggable){
+		let mousepostionX=e.clientX-(offsetX+cubeLeft);
+		let mousepostiony=e.clientY-(offsetY+cubeTop);
+	
+		cube.style.left=`${mousepostionX}px`
+		cube.style.top=`${mousepostiony}px`
+	}
+	
+})
+
+});
+document.onmouseup=()=>{
+	element=null;
+	document.onmousemove=null;
+	isDraggable=false
+}
