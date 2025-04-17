@@ -10,7 +10,7 @@ cubes.forEach((cube)=>{
 			let x=e.pageX;
 			let y=e.pageY;
 			element.style.left=x -50 + "px";
-		element.style.right=y -50 + "px";
+		element.style.top=y -50 + "px";
 		}
 		
 	})
