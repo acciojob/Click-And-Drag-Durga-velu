@@ -1,6 +1,6 @@
 // Your code here.
 let element
-let cubes=document.qurySelectorAll(".item")
+let cubes=document.querySelectorAll(".item")
 cubes.forEach((cube)=>{
 
 	cube.addEventListener("mousedown",()=>{
