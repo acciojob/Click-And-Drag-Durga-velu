@@ -1,5 +1,6 @@
 // Your code here.
 let element;
+let x,y;
 let cubes=document.querySelectorAll(".item")
 cubes.forEach((cube)=>{
 
@@ -8,8 +9,8 @@ cubes.forEach((cube)=>{
 		element=cube;
 		document.onmousemove=(e)=>{
 			if(element){
-				let x=e.clientX;
-			let y=e.clientY;
+				 x=e.clientX;
+			y=e.clientY;
 			element.style.left=x -50 + "px";
 		element.style.top=y -50 + "px";
 			}
