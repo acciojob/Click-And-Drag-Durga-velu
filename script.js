@@ -1,22 +1,22 @@
 // Your code here.
 let element;
-let x,y;
+let offsetx,offsety, cubeleft,cubetop;
 let cubes=document.querySelectorAll(".item")
 cubes.forEach((cube)=>{
 
-	cube.addEventListener("mousedown",()=>{
+	cube.addEventListener("mousedown",(e)=>{
        cube.style.position="absolute"
 		element=cube;
-		document.onmousemove=(e)=>{
-			if(element){
-				 x=e.clientX;
-			y=e.clientY;
-			element.style.left=x -50 + "px";
-		element.style.top=y -50 + "px";
-			}
-			
-		}
-		
+		offsetx=e.clientX;
+			offsety=e.clientY;
+		cubeleft=cube.offsetLeft;
+		cubetop=cube.offsetTop;
+	cube.addEventListener("mousemove",(e)=>{
+
+let mousepositionX=e.clientX-(offsetx+cubeleft);
+		let mousepositionY=e.clientY-(offsety+cubetop);
+ cube.style.left=`${mousepositionX}px`
+		cube.style.top=`${mousepositionY}px`
 	})
 })
 
