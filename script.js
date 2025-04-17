@@ -1,30 +1,49 @@
 // Your code here.
 let element;
-let offsetX,offsetY;
-let cubes=document.querySelectorAll(".item")
-cubes.forEach((cube)=>{
+let offsetX, offsetY;
 
-	cube.addEventListener("mousedown",(e)=>{
-		e.preventDefault();
-       cube.style.position="absolute"
-		element=cube;
-		offsetX = e.clientX - cube.getBoundingClientRect().left;
-        offsetY = e.clientY - cube.getBoundingClientRect().top;
-	document.onmousemove=(e)=>{
-                 if (element) {
-                let mouseX = e.clientX - offsetX;
-let mouseY = e.clientY - offsetY;
-	
-                element.style.left = mouseX + "px";
-                element.style.top = mouseY + "px";
-            }
-        };
-})
+const container = document.querySelector(".items");
+const cubes = document.querySelectorAll(".item");
+
+cubes.forEach((cube) => {
+  cube.addEventListener("mousedown", (e) => {
+    e.preventDefault();
+    element = cube;
+    cube.style.position = "absolute";
+    cube.style.zIndex = 1000;
+
+    const cubeRect = cube.getBoundingClientRect();
+    const containerRect = container.getBoundingClientRect();
+
+    // Offset of mouse inside cube
+    offsetX = e.clientX - cubeRect.left;
+    offsetY = e.clientY - cubeRect.top;
+
+    document.onmousemove = (e) => {
+      if (!element) return;
+
+      let mouseX = e.clientX - containerRect.left - offsetX;
+      let mouseY = e.clientY - containerRect.top - offsetY;
+
+      // Enforce boundaries
+      const maxX = container.clientWidth - cube.offsetWidth;
+      const maxY = container.clientHeight - cube.offsetHeight;
+
+      mouseX = Math.max(0, Math.min(mouseX, maxX));
+      mouseY = Math.max(0, Math.min(mouseY, maxY));
+
+      element.style.left = mouseX + "px";
+      element.style.top = mouseY + "px";
+    };
+  });
 });
-document.onmouseup=()=>{
-	element=null;
-	document.onmousemove=null;
-}
+
+// Stop dragging
+document.onmouseup = () => {
+  element = null;
+  document.onmousemove = null;
+};
+
 
 
 
