@@ -22,7 +22,7 @@ let mouseY = e.clientY - offsetY;
 });
 document.onmouseup=()=>{
 	element=null;
-	document.onmousemove=null
+	document.onmousemove=null;
 }
 
 
